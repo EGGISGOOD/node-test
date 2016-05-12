@@ -1,0 +1,24 @@
+{
+  "name": "egg",
+  "version": "0.0.1",
+  "description": "egg is TEST",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "connect-redis": "^3.0.2",
+    "cookie-parser": "^1.4.1",
+    "crypto": "0.0.3",
+    "curl": "^0.1.4",
+    "debug": "^2.2.0",
+    "ejs": "^2.4.1",
+    "express": "^4.13.4",
+    "express-session": "^1.13.0",
+    "multer": "^1.1.0",
+    "mysql": "^2.10.2",
+    "node-schedule": "^1.1.0",
+    "redis": "^2.6.0-2",
+    "request": "^2.72.0",
+    "socket.io": "^1.4.6",
+    "thenjs": "^2.0.3",
+    "uglify-js": "^2.6.2"
+  }
+}
