@@ -8,21 +8,23 @@ router.get('/', function(req, res) {
   res.render('index', { title: 'Express' });
 });
  
+ 
+ 
 /* GET login page. */
 router.get('/login', function(req, res) {
 	 res.render('login', { title: '用户登录' });
 })
 
 .post('/login',urlencodedParser,function(req,res){
-	 var user={
+	
+	 var user = {
         'username': 'admin',
-        'password': '123456'
+        'password': '123123'
     }
-
+	
     if(req.body.username === user.username && req.body.password === user.password){
-		
-		
-        res.redirect('/home');
+		req.session.user = user.username;
+        res.redirect('/socket/show');
     }else{
 		res.redirect('/login');
 	}
@@ -32,6 +34,7 @@ router.get('/login', function(req, res) {
 
 /* GET home page. */
 router.get('/home',function(req, res){
+	
 	 var user={
         username:'admin',
         password:'123456'
@@ -55,6 +58,7 @@ router.get('/cookis',function(req,res){
 
 
 router.get('/session',function(req,res){
+	
   var sess = req.session
   if (sess.views) {
     sess.views++;
@@ -66,6 +70,7 @@ router.get('/session',function(req,res){
     sess.views = 1
     res.end('welcome to the session demo. refresh!')
   }
+  
 });
 
 
@@ -73,6 +78,7 @@ router.get('/session',function(req,res){
 
 
 router.get('/SessionRedis',function(req,res){
+	
 	if(!req.session.user){
 	  req.session.user = 'aaaaaa';
 	}
@@ -81,7 +87,6 @@ router.get('/SessionRedis',function(req,res){
 })
 
 router.get('/getData', function(req, res) {
-
 	var url = 'http://testd.ziines.com/api/getPostDetail/id/1058';
 	
 	request(url, function (error, response, body) {

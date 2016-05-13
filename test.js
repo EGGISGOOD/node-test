@@ -1,9 +1,6 @@
 var EventEmitter = require('events').EventEmitter; 
 var event = new EventEmitter(); 
 
-
-
-
 event.on('diaoni',function(){
 	 var data = {  
 		id:2,  
@@ -43,6 +40,8 @@ function curl(data){
     req.write(data + "\n");  
     req.end();  
 }
+
+
 
 
 
