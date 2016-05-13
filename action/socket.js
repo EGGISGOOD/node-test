@@ -12,7 +12,8 @@ router.get('/', function(req, res){
 
 router.get('/show',function(req, res){
 	console.log(req.session.user);
-	console.log(req.session.id);
+	console.log(req.session);
+	//console.log(req.cookies);
 	res.render('show', { title: '∂‡»À¡ƒÃÏ “' });
 	
 	res.end();

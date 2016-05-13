@@ -43,11 +43,9 @@ app.set('view engine', 'html'); //转换 HTML 模式
 
 app.use(cookieParser('ccc'));	
 app.use(session({
-//	cookie: {maxAge: 1000 },
 	cookie: {maxAge: 100000},
     store: new RedisStore(redisConfig),
-    secret: 'ccc'
-
+    secret: 'ccc',
 }));
 
 
@@ -67,7 +65,15 @@ app.use('/callback', callback);
 app.use('/socket', socket);
 //checked session 
 
-
+app.use(session( /* setup session here */ ))
+app.use(function (req, res, next) {
+  if (!req.session) {
+    return next(new Error('oh no')) // handle error
+  }else{
+	res.cookie('sessionID',req.session.id, {maxAge:100000, path:'/', httpOnly:true});
+  }
+  next() // otherwise continue
+})
 
 
  ///catch 404 and forward to error handler
